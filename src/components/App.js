@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
 import reducer, { initialState } from './../reducers'
-import { addOne, applyNumber, change_operation, clearDisplay } from './../actions'
+import { addOne, applyNumber, change_operation, clearDisplay, mPlus, mR, mC } from './../actions'
 import './App.css'
 
 import TotalDisplay from './TotalDisplay';
@@ -8,9 +8,7 @@ import CalcButton from './CalcButton';
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
-
-  console.log('state: ', state);
-
+ 
   const handleClickOperation = (e) => {        
     dispatch (change_operation(e.target.value))  
   } 
@@ -24,15 +22,15 @@ function App() {
   }
 
   const handleClickMplus = (e) => {
-    
+    dispatch(mPlus(state.memory))
   }
 
   const handleClickMR = (e) => {
-
+    dispatch(mR(state.total)) 
   }
 
   const handleClickMC = (e) => {
-
+    dispatch(mC()) 
   }
 
   return (
@@ -54,10 +52,10 @@ function App() {
             <div className="row">
               <CalcButton onClick = { handleClickMplus } value={"M+"}/>
               <CalcButton onClick = { handleClickMR } value={"MR"}/>
-              <CalcButton onClick = { handleClickMR } value={"MC"}/>
+              <CalcButton onClick = { handleClickMC } value={"MC"}/>
             </div>
 
-            <div handleClickNumber className="row">
+            <div onClick = { handleClickNumber } className="row">
               <CalcButton value={1}/>
               <CalcButton value={2}/>
               <CalcButton value={3}/>
