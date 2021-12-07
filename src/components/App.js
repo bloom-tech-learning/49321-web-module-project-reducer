@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
 import reducer, { initialState } from './../reducers'
-import { change_operation } from './../actions'
+import { addOne, change_operation } from './../actions'
 import './App.css'
 
 import TotalDisplay from './TotalDisplay';
@@ -13,6 +13,7 @@ function App() {
 
   const handleClick = (e) => {
     console.log('I am click the button: ', e.target.value);
+    dispatch(addOne());
   } 
 
   return (
