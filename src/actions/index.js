@@ -10,6 +10,11 @@ export const applyNumber = (number) => {
 }
 
 export const CHANGE_OPERATION = "CHANGE_OPERATION"
-export const change_operation = () => {
-    return ({type: CHANGE_OPERATIONs})
+export const change_operation = (operation) => {
+    return ({type: CHANGE_OPERATION, payload:operation})
 }
+export const CLEAR = "CLEAR"
+export const clearDisplay = () => {
+    return ({type: CLEAR})
+}
+

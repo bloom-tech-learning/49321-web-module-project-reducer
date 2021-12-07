@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
 import reducer, { initialState } from './../reducers'
-import { addOne, applyNumber } from './../actions'
+import { addOne, applyNumber, change_operation, clearDisplay } from './../actions'
 import './App.css'
 
 import TotalDisplay from './TotalDisplay';
@@ -11,13 +11,29 @@ function App() {
 
   console.log('state: ', state);
 
-  const handleClick = (e) => {
-    console.log('I am click the button: ', e.target.value);
-    console.log('I am click the button: ', typeof(e.target.value));
-    console.log('state: ', state);
-    // dispatch(addOne())
-    dispatch (applyNumber(Number(e.target.value)))
+  const handleClickOperation = (e) => {        
+    dispatch (change_operation(e.target.value))  
   } 
+
+  const handleClickNumber = (e) => {
+    dispatch (applyNumber(Number(e.target.value)))
+  }
+
+  const handleClickCE = (e) => {
+    dispatch (clearDisplay()) 
+  }
+
+  const handleClickMplus = (e) => {
+    
+  }
+
+  const handleClickMR = (e) => {
+
+  }
+
+  const handleClickMC = (e) => {
+
+  }
 
   return (
     <div className="App">
@@ -36,37 +52,37 @@ function App() {
             </div>
             
             <div className="row">
-              <CalcButton onClick = { handleClick } value={"M+"}/>
-              <CalcButton onClick = { handleClick } value={"MR"}/>
-              <CalcButton onClick = { handleClick } value={"MC"}/>
+              <CalcButton onClick = { handleClickMplus } value={"M+"}/>
+              <CalcButton onClick = { handleClickMR } value={"MR"}/>
+              <CalcButton onClick = { handleClickMR } value={"MC"}/>
             </div>
 
-            <div className="row">
-              <CalcButton onClick = { handleClick } value={1}/>
-              <CalcButton onClick = { handleClick } value={2}/>
-              <CalcButton onClick = { handleClick } value={3}/>
+            <div handleClickNumber className="row">
+              <CalcButton value={1}/>
+              <CalcButton value={2}/>
+              <CalcButton value={3}/>
             </div>
 
-            <div className="row">
-              <CalcButton onClick = { handleClick } value={4}/>
-              <CalcButton onClick = { handleClick } value={5}/>
-              <CalcButton onClick = { handleClick } value={6}/>
+            <div onClick = { handleClickNumber } className="row">
+              <CalcButton value={4}/>
+              <CalcButton value={5}/>
+              <CalcButton value={6}/>
             </div>
 
-            <div className="row">
-              <CalcButton onClick = { handleClick } value={7}/>
-              <CalcButton onClick = { handleClick } value={8}/>
-              <CalcButton onClick = { handleClick } value={9}/>
+            <div onClick = { handleClickNumber } className="row">
+              <CalcButton value={7}/>
+              <CalcButton value={8}/>
+              <CalcButton value={9}/>
             </div>
 
-            <div className="row">
-              <CalcButton onClick = { handleClick } value={"+"}/>
-              <CalcButton onClick = { handleClick } value={"*"}/>
-              <CalcButton onClick = { handleClick } value={"-"}/>
+            <div onClick = { handleClickOperation } className="row">
+              <CalcButton value={"+"}/>
+              <CalcButton value={"*"}/>
+              <CalcButton value={"-"}/>
             </div>
 
             <div className="row ce_button">
-              <CalcButton onClick = { handleClick } value={"CE"}/>
+              <CalcButton onClick = { handleClickCE } value={"CE"}/>
             </div>
 
           </form>
